@@ -64,14 +64,13 @@ class ReverseGeoCodingRestController
       @RequestParam("latitude") double latitude)
    {
 
-      if (!(Double.toString(longitude).matches("[1-9][0-9]*(\\.[0-9]{1,2})?")))
-         throw new ConstraintViolationException("Input Error, please enter valid longitude",
-            Collections.emptySet());
+	   if (!(Double.toString(longitude).matches("(\\+|-)?([0-9]+(\\.[0-9]+))")))
+	         throw new ConstraintViolationException("Input Error, please enter valid longitude",
+	            Collections.emptySet());
 
-      if (!(Double.toString(latitude).matches("[1-9][0-9]*(\\.[0-9]{1,2})?")))
-         throw new ConstraintViolationException("Input Error, please enter valid latitude",
-            Collections.emptySet());
-
+	      if (!(Double.toString(latitude).matches("(\\+|-)?([0-9]+(\\.[0-9]+))")))
+	         throw new ConstraintViolationException("Input Error, please enter valid latitude",
+	            Collections.emptySet());
 
       logger.info(" inSide getAddressedForGeoCoord: " + longitude + " ," + latitude);
       GeoLookUpHistory geoLookUpHistory = new GeoLookUpHistory();
